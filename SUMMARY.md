@@ -5,4 +5,5 @@
   * [0- Prefacio](chapter1/1-prefacio.md)
   * [1- En la programación](chapter1/1-capitulo-1-en-la-programacion.md)
     * [1.1 Código](chapter1/1-capitulo-1-en-la-programacion/11-codigo.md)
+    * [1.2 Inténtalo tú mismo](chapter1/1-capitulo-1-en-la-programacion/12-intentalo-tu-mismo.md)
 
