@@ -12,4 +12,6 @@
     * [1.6 Variables](chapter1/1-capitulo-1-en-la-programacion/16-variables.md)
     * [1.7 Bloques](chapter1/1-capitulo-1-en-la-programacion/17-bloques.md)
     * [1.8 Condicionales](chapter1/1-capitulo-1-en-la-programacion/18-condicionales.md)
+    * [1.9 Bucles](chapter1/1-capitulo-1-en-la-programacion/19-bucles.md)
+    * [1.10 Funciones](chapter1/1-capitulo-1-en-la-programacion/110-funciones.md)
 
