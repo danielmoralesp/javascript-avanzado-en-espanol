@@ -1,4 +1,4 @@
-# Prefacio
+# 0- Prefacio
 
 Estoy seguro de que se dio cuenta, pero "JS" en el título de la serie de libros no es una abreviatura de palabras utilizadas para maldecir sobre JavaScript, aunque maldecir a las peculiaridades del lenguaje es algo con lo que probablemente todos se pueden identificar.
 

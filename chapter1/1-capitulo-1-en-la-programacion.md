@@ -1,4 +1,4 @@
-# 1- Capitulo 1 - En la programación
+# 1- En la programación
 
 Bienvenido a la serie You Do not Know JS \(YDKJS\).
 
