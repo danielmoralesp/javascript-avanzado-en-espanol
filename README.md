@@ -14,3 +14,12 @@ Si deseas hacer alguna corrección o aporte \(ya que seguro podría tener errore
 
 Como mencioné anteriormente, no soy el creador de la serie de libros, solo el traductor al español. El creador es [Kyle Simpson](https://github.com/getify), cuyo trabajo esta bajo licencia  [Creative Commons Attribution-NonCommercial-NoDerivs 4.0 Unported License](http://creativecommons.org/licenses/by-nc-nd/4.0/).
 
+¿Por Donde Empezar?
+
+Aunque ésta es una serie de libros de Javascript Avanzado, tambien puede empezarlos con un nivel básico. 
+
+* Si usted tiene nivel básico en Programación y/o en Javascript = Vaya al Libro \# 1 - Up & Going
+* Si usted tiene un nivel básico/medio/avanzado en Programación y/o en Javascrip = Vaya al Libro \# 2 - Scope & Closures
+
+
+
