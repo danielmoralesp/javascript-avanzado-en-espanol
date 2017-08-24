@@ -14,4 +14,7 @@
     * [1.8 Condicionales](chapter1/1-capitulo-1-en-la-programacion/18-condicionales.md)
     * [1.9 Bucles](chapter1/1-capitulo-1-en-la-programacion/19-bucles.md)
     * [1.10 Funciones](chapter1/1-capitulo-1-en-la-programacion/110-funciones.md)
+    * [1.11 Scope \(Ámbito\)](chapter1/1-capitulo-1-en-la-programacion/111-scope-alcance.md)
+    * [1.12 Práctica](chapter1/1-capitulo-1-en-la-programacion/112-practica.md)
+    * [1.13 - Revisión](chapter1/1-capitulo-1-en-la-programacion/113-revision.md)
 
