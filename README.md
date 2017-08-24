@@ -2,7 +2,7 @@
 
 Esta es una traducción de la serie de libros de [You Don't Know JS \(book series\)](https://github.com/getify/You-Dont-Know-JS/), la cual es una serie de 6 libros que navegan profundamente en los mecanismos básicos y avanzados del lenguaje JavaScript. La primera edición de la serie está ahora completa.
 
-![](/assets/Captura de pantalla 2017-08-24 a las 10.08.18 a.m..png)
+[![](/assets/Captura de pantalla 2017-08-24 a las 10.08.18 a.m..png)](https://github.com/getify/You-Dont-Know-JS/)
 
 ### Porque realizo este trabajo?
 
