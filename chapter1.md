@@ -1,4 +1,4 @@
-# I- Libro \# 1 - Up & Going
+# I- Up & Going
 
 ### Prefacio
 
