@@ -36,5 +36,45 @@ Por ejemplo:
 a = b * 2;
 ```
 
+Esta declaración tiene cuatro expresiones en ella:
+
+2 es una expresión de valor literal
+
+b es una expresión variable, lo que significa recuperar su valor actual
+
+b \* 2 es una expresión aritmética, que significa hacer la multiplicación
+
+a = b \* 2 es una expresión de asignación, lo que significa asignar el resultado de la expresión b \* 2 a la variable a \(sobre las asignaciones posteriores\)
+
+Una expresión general que se mantiene sola también se denomina declaración de expresión, como la siguiente:
+
+```js
+b * 2;
+```
+
+Esta declaración de una expresión no es muy común o útil, ya que en general no tendría ningún efecto en el funcionamiento del programa: recuperaría el valor de b y lo multiplicaría por 2, pero luego no haría nada con ese resultado.
+
+Una sentencia de expresión más común es una instrucción de expresión de llamada \(véase "Funciones"\), ya que la sentencia completa es la expresión de llamada de la función en sí:
+
+```js
+alert( a );
+```
+
+### Ejecutar un programa
+
+¿De qué manera esas colecciones de declaraciones de programación le dicen a la computadora qué hacer? El programa necesita ser ejecutado, también conocido como ejecutar el programa.
+
+Declaraciones como `a = b * 2` son útiles para los desarrolladores al leer y escribir, pero en realidad no están en una forma en que la computadora pueda entender directamente. Así que una utilidad especial en la computadora \(ya sea un intérprete o un compilador\) se utiliza para traducir el código que escribe en comandos que una computadora puede entender.
+
+Para algunos lenguajes de computadora, esta traducción de los comandos se hace típicamente de arriba a abajo, línea por línea, cada vez que se ejecuta el programa, se llama generalmente interpretar el código.
+
+Para otros idiomas, la traducción se hace antes de tiempo, llamada compilación del código, por lo que cuando el programa se ejecuta más tarde, lo que está en ejecución es en realidad las instrucciones de la computadora ya compilada listo para ejecutarse.
+
+Normalmente, se afirma que JavaScript se interpreta, porque el código fuente de JavaScript se procesa cada vez que se ejecuta. Pero eso no es del todo exacto. El motor de JavaScript en realidad compila el programa sobre la marcha y luego ejecuta inmediatamente el código compilado.
+
+Nota: Para obtener más información sobre la compilación de JavaScript, consulte los dos primeros capítulos del título Scope & Closures de esta serie.
+
+
+
 
 
