@@ -1,5 +1,5 @@
 # Summary
 
 * [Introducción](README.md)
-* [First Chapter](chapter1.md)
+* [Libro \# 1 - Up & Going](chapter1.md)
 
