@@ -25,4 +25,5 @@
     * [2.5 Funciones como Valores](chapter1/2-en-javascript/25-funciones-como-valores.md)
     * [2.6 Identificador This](chapter1/2-en-javascript/26-identificador-this.md)
     * [2.7 Prototypes](chapter1/2-en-javascript/27-prototypes.md)
+    * [2.8 Lo Viejo y Lo Nuevo](chapter1/2-en-javascript/28-lo-viejo-y-lo-nuevo.md)
 
