@@ -100,15 +100,15 @@ Considerar:
 
 ```js
 function makeAdder(x) {
-	// El parámetro `x` es una variable interna
+    // El parámetro `x` es una variable interna
 
-	// función interna `add ()` usa `x`, así que
-	// tiene un "closure" sobre él
-	function add(y) {
-		return y + x;
-	};
+    // función interna `add ()` usa `x`, así que
+    // tiene un "closure" sobre él
+    function add(y) {
+        return y + x;
+    };
 
-	return add;
+    return add;
 }
 ```
 
@@ -125,10 +125,10 @@ var plusOne = makeAdder( 1 );
 // el exterior `makeAdder (..)`
 var plusTen = makeAdder( 10 );
 
-plusOne( 3 );		// 4  <-- 1 + 3
-plusOne( 41 );		// 42 <-- 1 + 41
+plusOne( 3 );        // 4  <-- 1 + 3
+plusOne( 41 );        // 42 <-- 1 + 41
 
-plusTen( 13 );		// 23 <-- 10 + 13
+plusTen( 13 );        // 23 <-- 10 + 13
 ```
 
 Más información sobre cómo funciona este código:
@@ -141,4 +141,52 @@ Más información sobre cómo funciona este código:
 No se preocupe si esto parece extraño y confuso al principio - puede serlo! Tomará mucha práctica entenderlo completamente.
 
 Pero confía en mí, una vez que lo hagas, es una de las técnicas más poderosas y útiles en toda la programación. Definitivamente vale la pena el esfuerzo para dejar que su cerebro cocine a fuego lento los closures poco a poco. En la siguiente sección, tendremos un poco más de práctica con los closures.
+
+#### Modules
+
+El uso más común de los closures en JavaScript es el patrón module. Los modules le permiten definir detalles de implementación privados \(variables, funciones\) ocultos del mundo exterior, así como una API pública accesible desde el exterior.
+
+Considere:
+
+```js
+function User(){
+	var username, password;
+
+	function doLogin(user,pw) {
+		username = user;
+		password = pw;
+
+		// do the rest of the login work
+	}
+
+	var publicAPI = {
+		login: doLogin
+	};
+
+	return publicAPI;
+}
+
+// create a `User` module instance
+var fred = User();
+
+fred.login( "fred", "12Battery34!" );
+```
+
+La función `User()` sirve como un ámbito externo que contiene las variables `username` y `password`, así como la función interna `doLogin()`; Estos son todos los detalles internos privados de este módulo de usuario que no se puede acceder desde el mundo exterior.
+
+**Advertencia**: No estamos llamando a `new User()` aquí, a propósito, a pesar del hecho de que probablemente parece más común a la mayoría de los lectores. `User()` es sólo una función, no una clase a instanciar, por lo que se llama normalmente. El uso de `new` sería inapropiado y realmente desperdiciaría recursos.
+
+Ejecutar `User()` crea una instancia del módulo `User` - se crea un nuevo ámbito y, por lo tanto, una copia completamente nueva de cada una de estas variables/funciones internas. Asignamos esta instancia a `fred`. Si ejecutamos `User()` de nuevo, obtendremos una nueva instancia completamente distinta de `fred`.
+
+La función interna `doLogin()` tiene un closure sobre el `username` y `password `, lo que significa que conservará su acceso a ellos incluso después de que la función `User()` termine de ejecutarse.
+
+`PublicAPI` es un objeto con una propiedad/método en él, `login`, que es una referencia a la función interna `doLogin()`. Cuando devolvemos `publicAPI` de `User()`, se convierte en la instancia que llamamos `fred`.
+
+En este punto, la función externa `User()` ha terminado de ejecutarse. Normalmente, se piensa que las variables internas como `username` y `password` se han ido. Pero aquí no lo han hecho, porque hay un closure en la función `login()` que los mantiene vivos.
+
+Es por eso que podemos llamar a `fred.login(..)` - lo mismo que llamar a la interna `doLogin(..)` - y todavía puede acceder a las variables internas de `username` y `password`.
+
+Hay una buena probabilidad de que con sólo este breve vistazo al closures y el patrón module, algunos de ellos sean todavía un poco confusos. ¡Está bien! Toma un poco de trabajo para envolver su cerebro alrededor de él.
+
+A partir de aquí, vaya a leer el título Scope & Closures de esta serie para una exploración mucho más profunda.
 
