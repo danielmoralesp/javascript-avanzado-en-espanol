@@ -50,18 +50,18 @@ El tipo `object` se refiere a un valor compuesto en el que se pueden establecer 
 
 ```js
 var obj = {
-	a: "hello world",
-	b: 42,
-	c: true
+    a: "hello world",
+    b: 42,
+    c: true
 };
 
-obj.a;		// "hello world"
-obj.b;		// 42
-obj.c;		// true
+obj.a;        // "hello world"
+obj.b;        // 42
+obj.c;        // true
 
-obj["a"];	// "hello world"
-obj["b"];	// 42
-obj["c"];	// true
+obj["a"];    // "hello world"
+obj["b"];    // 42
+obj["c"];    // true
 ```
 
 Puede ser útil pensar visualmente en este valor `obj`:
@@ -76,14 +76,14 @@ Por supuesto, la notación de paréntesis también es útil si desea acceder a u
 
 ```js
 var obj = {
-	a: "hello world",
-	b: 42
+    a: "hello world",
+    b: 42
 };
 
 var b = "a";
 
-obj[b];			// "hello world"
-obj["b"];		// 42
+obj[b];            // "hello world"
+obj["b"];        // 42
 ```
 
 Nota: Para obtener más información sobre objetos JavaScript, consulte el título This & Prototype Objects de esta serie, específicamente el Capítulo 3.
@@ -96,17 +96,17 @@ Un `array` es un objeto que contiene valores \(de cualquier tipo\) particularmen
 
 ```js
 var arr = [
-	"hello world",
-	42,
-	true
+    "hello world",
+    42,
+    true
 ];
 
-arr[0];			// "hello world"
-arr[1];			// 42
-arr[2];			// true
-arr.length;		// 3
+arr[0];            // "hello world"
+arr[1];            // 42
+arr[2];            // true
+arr.length;        // 3
 
-typeof arr;		// "object"
+typeof arr;        // "object"
 ```
 
 Nota: Los lenguajes que empiezan a contar a cero, como JS, utilizan `0` como el índice del primer elemento de la matriz.
@@ -127,17 +127,17 @@ El otro subtipo de objeto que usará en todos sus programas JS es una función:
 
 ```js
 function foo() {
-	return 42;
+    return 42;
 }
 
 foo.bar = "hello world";
 
-typeof foo;			// "function"
-typeof foo();		// "number"
-typeof foo.bar;		// "string"
+typeof foo;            // "function"
+typeof foo();        // "number"
+typeof foo.bar;        // "string"
 ```
 
-De nuevo, las funciones son un subtipo de objetos - `typeof` devuelve` "function"`, lo que implica que una función es un tipo principal - y por lo tanto puede tener propiedades, pero normalmente sólo se utilizan las propiedades del objeto `function` \(como `foo.bar`\) en limitadas casos.
+De nuevo, las funciones son un subtipo de objetos - `typeof` devuelve`"function"`, lo que implica que una función es un tipo principal - y por lo tanto puede tener propiedades, pero normalmente sólo se utilizan las propiedades del objeto `function` \(como `foo.bar`\) en limitadas casos.
 
 Nota: Para obtener más información sobre los valores de JS y sus tipos, consulte los dos primeros capítulos del título de Tipos y Gramática de esta serie.
 
@@ -151,9 +151,9 @@ Por ejemplo:
 var a = "hello world";
 var b = 3.14159;
 
-a.length;				// 11
-a.toUpperCase();		// "HELLO WORLD"
-b.toFixed(4);			// "3.1416"
+a.length;                // 11
+a.toUpperCase();        // "HELLO WORLD"
+b.toFixed(4);            // "3.1416"
 ```
 
 El "cómo lo hace" detrás de poder llamar `a.toUpperCase()` es más complicado que apenas ese método existente en el valor.
@@ -187,8 +187,8 @@ var a = "42";
 
 var b = Number( a );
 
-a;				// "42"
-b;				// 42 -- the number!
+a;                // "42"
+b;                // 42 -- the number!
 ```
 
 Y aquí hay un ejemplo de coerción implícita:
@@ -196,10 +196,10 @@ Y aquí hay un ejemplo de coerción implícita:
 ```js
 var a = "42";
 
-var b = a * 1;	// "42" implicitly coerced to 42 here
+var b = a * 1;    // "42" implicitly coerced to 42 here
 
-a;				// "42"
-b;				// 42 -- the number!
+a;                // "42"
+b;                // 42 -- the number!
 ```
 
 #### Truthy y Falsy
@@ -224,7 +224,93 @@ Cualquier valor que no esté en esta lista falsa es "`true`". Estos son algunos 
 
 Es importante recordar que un valor no booleano sólo sigue esta coerción "`true`" / "`false`" si es realmente coaccionado a un booleano. No es tan difícil confundirse con una situación que parece que coacciona un valor a un booleano cuando no lo es.
 
+#### Igualdad
 
+Hay cuatro operadores de igualdad: `==`, `===`, `!=`, Y `!==`. Las forma `!` son, por supuesto, las versiones simétricas "no iguales" de sus contrapartes; La no igualdad no debe confundirse con la desigualdad.
 
+La diferencia entre `==` y `===` normalmente se caracteriza por que `==` comprueba la igualdad de valor y` ===` comprueba tanto el valor como la igualdad de tipo. Sin embargo, esto es inexacto. La manera correcta de caracterizarlos es que `==` chequea por igualdad de valor con coerción permitida, y `===` comprueba la igualdad de valor sin permitir coerción; `===` se llama a menudo "igualdad estricta" por esta razón.
 
+Considere la coerción implícita que es permitida por la comparación `==` loose-equality y no se permite con la `===` estricta-igualdad:
+
+```js
+var a = "42";
+var b = 42;
+
+a == b;			// true
+a === b;		// false
+```
+
+En la comparación `a == b`, JS advierte que los tipos no coinciden, por lo que pasa por una serie ordenada de pasos para coaccionar uno o ambos valores a un tipo diferente hasta que los tipos coincidan, donde entonces se puede comprobar una igualdad de valor simple .
+
+Si piensas en ello, hay dos formas posibles de que `a == b` puedan dar `true` a través de coerción. O la comparación podría terminar como `42 == 42` o podría ser `"42" == "42"`. Entonces, ¿cuál es?
+
+La respuesta: `"42"` se convierte en `42`, para hacer la comparación `42 == 42`. En un ejemplo tan simple, en realidad no parece importar de qué manera va ese proceso, ya que el resultado final es el mismo. Hay casos más complejos donde importa no sólo cuál es el resultado final de la comparación, sino cómo llegar allí.
+
+El `a === b` produce `false`, porque la coerción no está permitida, por lo que la comparación de valores sencillos obviamente falla. Muchos desarrolladores sienten que `===` es más predecible, por lo que abogan por usar siempre esa forma y mantenerse alejados de `==`. Creo que esta visión es muy miope. Creo que `==` es una poderosa herramienta que ayuda a su programa, si usted se toma el tiempo para aprender cómo funciona.
+
+No vamos a cubrir todos los detalles básicos de cómo la coerción en comparaciones funciona aquí. Mucho de él es bastante sensible, pero hay algunos casos importantes a tener cuidado. Puede leer la sección 11.9.3 de la especificación ES5 \([http://www.ecma-international.org/ecma-262/5.1/](http://www.ecma-international.org/ecma-262/5.1/)\) para ver las reglas exactas, y le sorprenderá lo sencillo que es este mecanismo , En comparación con todo el bombo negativo que lo rodea.
+
+Para reducir un montón de detalles a unos pocos takeaways simples, y ayudarle a saber si utilizar `==` o `===` en varias situaciones, aquí están mis reglas simples:
+
+* Si un valor \(aka lado\) en una comparación podría ser el valor `true` o `false`, evite `==` y utilice `===`.
+* Si cualquier valor en una comparación podría ser uno de estos valores específicos \(`0`, `""`, o `[]` - matriz vacía\), evite `==` y utilice `===`.
+* En todos los demás casos, es seguro utilizar `==`. No sólo es seguro, sino que en muchos casos simplifica su código de una manera que mejora la legibilidad.
+
+A lo que estas reglas se reducen es a exigir que usted piense críticamente sobre su código y sobre qué tipos de valores pueden venir a través de las variables que se comparan por igualdad. Si puede estar seguro acerca de los valores, y `==` es seguro, úselo! Si no puede estar seguro acerca de los valores, utilice `===`. Es así de simple.
+
+El `!=` No-igualdad forma pares con `==`, y el `!==` pares de forma con `===`. Todas las reglas y observaciones que acabamos de discutir se mantienen simétricamente para estas comparaciones sin igualdad.
+
+Debe tomar nota especial de las reglas de comparación `==` y `===` si está comparando dos valores no primitivos, como objetos \(incluyendo funciones y arrays\). Debido a que esos valores se mantienen en realidad por referencia, las comparaciones `==` y `===` simplemente comprobarán si las referencias coinciden, no cualquier cosa acerca de los valores subyacentes.
+
+Por ejemplo, las matrices se coaccionan por defecto a strings simplemente uniendo todos los valores con comas \(`,`\) . Podría pensar que dos matrices con el mismo contenido serían `==` iguales, pero no lo son:
+
+```js
+var a = [1,2,3];
+var b = [1,2,3];
+var c = "1,2,3";
+
+a == c;		// true
+b == c;		// true
+a == b;		// false
+```
+
+Nota: Para obtener más información acerca de las reglas de comparación de igualdad, consulte la especificación ES5 \(sección 11.9.3\) y consulte también el Capítulo 4 del título de Tipos y Gramática de esta serie; Consulte el Capítulo 2 para obtener más información acerca de valores versus referencias.
+
+#### Desigualdad
+
+Los operadores `<`, `>`, `<=`, y `>=` se utilizan para la desigualdad, a la que se hace referencia en la especificación como "comparación relacional". Normalmente se utilizarán con valores comparables como números. Es fácil entender que `3 < 4`.
+
+Pero los valores `string` de JavaScript también se pueden comparar por desigualdad, usando reglas alfabéticas típicas \(`"bar" < "foo"`\).
+
+¿Y la coerción? Se usan reglas similares como con la comparación `==`  \(aunque no exactamente idénticas!\) a los operadores de desigualdad. Cabe destacar que no hay operadores de "desigualdad estricta" que desautorizarían la coerción de la misma manera que la "igualdad estricta".
+
+Considere:
+
+```js
+var a = 41;
+var b = "42";
+var c = "43";
+
+a < b;		// true
+b < c;		// true
+```
+
+¿Qué pasa aquí? En la sección 11.8.5 de la especificación ES5, se dice que si ambos valores en la comparación `<` son strings, como ocurre con `b < c`, la comparación se hace lexicográficamente \(aka alfabéticamente como un diccionario\). Pero si uno o ambos no es una cadena, como ocurre con `a < b`, entonces ambos valores son forzados a ser números y se produce una comparación numérica típica.
+
+El gotcha más grande que se puede encontrar aquí con comparaciones entre tipos de valor potencialmente diferentes - recuerde, no hay formas de "desigualdad estricta" para usar - es cuando uno de los valores no se puede convertir en un número válido, como:
+
+```js
+var a = 42;
+var b = "foo";
+
+a < b;		// false
+a > b;		// false
+a == b;		// false
+```
+
+Espera, ¿cómo pueden ser falsas las tres comparaciones? Debido a que el valor `b` está siendo coaccionado al "valor de número inválido" `NaN` en las comparaciones `<` y `>`, y la especificación dice que `NaN` no es ni mayor ni menor que cualquier otro valor.
+
+La comparación `==` falla por una razón diferente. `a == b` podría fallar si se interpreta como `42 == NaN` o `"42" == "foo"` - como hemos explicado anteriormente, el primero es el caso.
+
+Nota: Para obtener más información sobre las reglas de comparación de desigualdades, consulte la sección 11.8.5 de la especificación ES5 y consulte también el Capítulo 4 del título Tipos y Gramática de esta serie.
 
