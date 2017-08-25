@@ -4,7 +4,7 @@ Hasta ahora, hemos discutido las funciones como el principal mecanismo de scope 
 
 ```js
 function foo() {
-	// ..
+    // ..
 }
 ```
 
@@ -18,11 +18,11 @@ Considerar:
 
 ```js
 var foo = function() {
-	// ..
+    // ..
 };
 
 var x = function bar(){
-	// ..
+    // ..
 };
 ```
 
@@ -32,7 +32,7 @@ La segunda expresión de función llamada \(`bar`\), incluso como una referencia
 
 Para obtener más información, consulte el título Scope & Closures de esta serie.
 
-### Immediately Invoked Function Expressions \(IIFEs\) -  Expresiones de función invocadas Inmediatamente 
+### Immediately Invoked Function Expressions \(IIFEs\) -  Expresiones de función invocadas Inmediatamente
 
 En el snippet anterior, ninguna de las expresiones de función se ejecutan - podríamos si hubiéramos incluido `foo()` o `x()`, por ejemplo.
 
@@ -40,10 +40,53 @@ Hay otra forma de ejecutar una expresión de función, que normalmente se denomi
 
 ```js
 (function IIFE(){
-	console.log( "Hello!" );
+    console.log( "Hello!" );
 })();
 // "Hello!"
 ```
 
+El exterior `(..)` que rodea la expresión de función `(función IIFE () {..})` es sólo un matiz de la gramática JS necesaria para evitar que se trate como una declaración de función normal.
 
+El final `()` al final de la expresión - el `}) ()`;  - es lo que en realidad ejecuta la expresión de función referenciada inmediatamente antes de ella.
+
+Eso puede parecer extraño, pero no es tan extraño como a primera vista. Considere las similitudes entre `foo` y `IIFE` aquí:
+
+```js
+function foo() { .. }
+
+// `foo` function reference expression,
+// then `()` executes it
+foo();
+
+// expresión de función `IIFE`,
+// entonces `()` lo ejecuta
+(function IIFE(){ .. })();
+```
+
+Como se puede ver, la lista de la función `(IIFE () {..})` antes de su ejecución `()` es esencialmente el mismo que incluye `foo` antes de su ejecución `()`; En ambos casos, la referencia de función se ejecuta con `()` inmediatamente después de ella.
+
+Debido a que un `IIFE` es sólo una función y las funciones crean un ámbito variable, el uso de un `IIFE` de esta manera se utiliza a menudo para declarar variables que no afectarán al código circundante fuera del `IIFE`:
+
+```js
+var a = 42;
+
+(function IIFE(){
+	var a = 10;
+	console.log( a );	// 10
+})();
+
+console.log( a );		// 42
+```
+
+Los `IIFE` también pueden tener valores de retorno:
+
+```js
+var x = (function IIFE(){
+	return 42;
+})();
+
+x;	// 42
+```
+
+El valor `42` se devuelve de la función denominada `IIFE` que se ejecuta, y luego se asigna a `x`.
 
