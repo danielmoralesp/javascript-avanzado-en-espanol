@@ -20,4 +20,6 @@
   * [2- En Javascript](chapter1/2-en-javascript.md)
     * [2.1 Valores y Tipos](chapter1/2-en-javascript/1-valores-y-tipos.md)
     * [2.2 Variables](chapter1/2-en-javascript/22-variables.md)
+    * [2.3 Condicionales](chapter1/2-en-javascript/23-condicionales.md)
+    * [2.4 Modo estricto](chapter1/2-en-javascript/24-modo-estricto.md)
 
