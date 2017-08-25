@@ -35,4 +35,5 @@
     * [3.4 Async & Performance](chapter1/3-en-ydkjs/34-async-and-performance.md)
     * [3.5 ES6 & Más allá](chapter1/3-en-ydkjs/35-es6-and-mas-alla.md)
     * [3.6 Revisión](chapter1/3-en-ydkjs/36-revision.md)
+* [II- Scope & Closures](ii-scope-and-closures.md)
 
