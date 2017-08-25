@@ -33,4 +33,6 @@
     * [3.2 This & Object Prototypes](chapter1/3-en-ydkjs/31-this-and-object-prototypes.md)
     * [3.3 Tipos & Gramática](chapter1/3-en-ydkjs/32-tipos-and-gramatica.md)
     * [3.4 Async & Performance](chapter1/3-en-ydkjs/34-async-and-performance.md)
+    * [3.5 ES6 & Más allá](chapter1/3-en-ydkjs/35-es6-and-mas-alla.md)
+    * [3.6 Revisión](chapter1/3-en-ydkjs/36-revision.md)
 
