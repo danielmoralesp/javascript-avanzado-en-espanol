@@ -24,4 +24,5 @@
     * [2.4 Modo estricto](chapter1/2-en-javascript/24-modo-estricto.md)
     * [2.5 Funciones como Valores](chapter1/2-en-javascript/25-funciones-como-valores.md)
     * [2.6 Identificador This](chapter1/2-en-javascript/26-identificador-this.md)
+    * [2.7 Prototypes](chapter1/2-en-javascript/27-prototypes.md)
 
