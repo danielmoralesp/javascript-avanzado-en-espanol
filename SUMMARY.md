@@ -19,4 +19,5 @@
     * [1.13 - Revisión](chapter1/1-capitulo-1-en-la-programacion/113-revision.md)
   * [2- En Javascript](chapter1/2-en-javascript.md)
     * [2.1 Valores y Tipos](chapter1/2-en-javascript/1-valores-y-tipos.md)
+    * [2.2 Variables](chapter1/2-en-javascript/22-variables.md)
 
