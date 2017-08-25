@@ -26,4 +26,6 @@
     * [2.6 Identificador This](chapter1/2-en-javascript/26-identificador-this.md)
     * [2.7 Prototypes](chapter1/2-en-javascript/27-prototypes.md)
     * [2.8 Lo Viejo y Lo Nuevo](chapter1/2-en-javascript/28-lo-viejo-y-lo-nuevo.md)
+    * [2.9 Non-JavaScript](chapter1/2-en-javascript/29-non-javascript.md)
+    * [2.10 Revisión](chapter1/2-en-javascript/210-revision.md)
 
