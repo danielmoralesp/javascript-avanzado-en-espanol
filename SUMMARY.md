@@ -28,4 +28,7 @@
     * [2.8 Lo Viejo y Lo Nuevo](chapter1/2-en-javascript/28-lo-viejo-y-lo-nuevo.md)
     * [2.9 Non-JavaScript](chapter1/2-en-javascript/29-non-javascript.md)
     * [2.10 Revisión](chapter1/2-en-javascript/210-revision.md)
+  * [3- En YDKJS](chapter1/3-en-ydkjs.md)
+    * [3.1 Scope & Closures](chapter1/3-en-ydkjs/31-scope-and-closures.md)
+    * [3.1 This & Object Prototypes](chapter1/3-en-ydkjs/31-this-and-object-prototypes.md)
 
