@@ -71,22 +71,74 @@ Debido a que un `IIFE` es sólo una función y las funciones crean un ámbito va
 var a = 42;
 
 (function IIFE(){
-	var a = 10;
-	console.log( a );	// 10
+    var a = 10;
+    console.log( a );    // 10
 })();
 
-console.log( a );		// 42
+console.log( a );        // 42
 ```
 
 Los `IIFE` también pueden tener valores de retorno:
 
 ```js
 var x = (function IIFE(){
-	return 42;
+    return 42;
 })();
 
-x;	// 42
+x;    // 42
 ```
 
 El valor `42` se devuelve de la función denominada `IIFE` que se ejecuta, y luego se asigna a `x`.
+
+### Closure
+
+El closure es uno de los conceptos más importantes, ya menudo menos comprendidos, en JavaScript. No lo voy a cubrir en detalle aquí y en su lugar le remito al título Scope & Closures de esta serie. Pero quiero decir algunas cosas sobre el para que entiendas el concepto general. Será una de las técnicas más importantes en su nivel de habilidades JS.
+
+Puede pensar en el closure como una forma de "_**recordar**_" y seguir accediendo al ámbito de una función \(y sus variables\) incluso una vez que la función ha terminado de ejecutarse.
+
+Considerar:
+
+```js
+function makeAdder(x) {
+	// El parámetro `x` es una variable interna
+
+	// función interna `add ()` usa `x`, así que
+	// tiene un "closure" sobre él
+	function add(y) {
+		return y + x;
+	};
+
+	return add;
+}
+```
+
+La referencia a la función interna `add(..)` que se retorna con cada llamada al `makeAdder(..)` externo es capaz de recordar cualquier valor `x` que se pasó en `makeAdder(..)`. Ahora, vamos a usar `makeAdder(..)`:
+
+```js
+// `plusOne` obtiene una referencia a la función `add(..)` interna
+//  con closure sobre el parámetro `x` de
+// el exterior de `makeAdder(..)`
+var plusOne = makeAdder( 1 );
+
+// `plusTen` obtiene una referencia a la función `add (..)`interna
+// con closure sobre el parámetro `x` de
+// el exterior `makeAdder (..)`
+var plusTen = makeAdder( 10 );
+
+plusOne( 3 );		// 4  <-- 1 + 3
+plusOne( 41 );		// 42 <-- 1 + 41
+
+plusTen( 13 );		// 23 <-- 10 + 13
+```
+
+Más información sobre cómo funciona este código:
+
+1. Cuando llamamos `makeAdder(1)`, obtenemos una referencia a su `add(..)` interna que recuerda `x` como `1`. Llamamos a esta referencia de función `plusOne(..)`.
+2. Cuando llamamos `makeAdder(10)`, obtenemos otra referencia a su `add(..)` interna que recuerda `x` como `10`. Llamamos a esta referencia de función `plusTen(..)`.
+3. Cuando llamamos `plusOne(3)`, añade `3` \(su `y` interno\) al `1` \(recordado por `x`\), y obtenemos `4` como el resultado.
+4. Cuando llamamos `plusTen(13)`, añade `13` \(su `y` interno\) al `10` \(recordado por `x`\), y obtenemos `23` como el resultado.
+
+No se preocupe si esto parece extraño y confuso al principio - puede serlo! Tomará mucha práctica entenderlo completamente.
+
+Pero confía en mí, una vez que lo hagas, es una de las técnicas más poderosas y útiles en toda la programación. Definitivamente vale la pena el esfuerzo para dejar que su cerebro cocine a fuego lento los closures poco a poco. En la siguiente sección, tendremos un poco más de práctica con los closures.
 
