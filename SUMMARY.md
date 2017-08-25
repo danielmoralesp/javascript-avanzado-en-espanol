@@ -30,6 +30,7 @@
     * [2.10 Revisión](chapter1/2-en-javascript/210-revision.md)
   * [3- En YDKJS](chapter1/3-en-ydkjs.md)
     * [3.1 Scope & Closures](chapter1/3-en-ydkjs/31-scope-and-closures.md)
-    * [3.1 This & Object Prototypes](chapter1/3-en-ydkjs/31-this-and-object-prototypes.md)
-    * [3.2 Tipos & Gramática](chapter1/3-en-ydkjs/32-tipos-and-gramatica.md)
+    * [3.2 This & Object Prototypes](chapter1/3-en-ydkjs/31-this-and-object-prototypes.md)
+    * [3.3 Tipos & Gramática](chapter1/3-en-ydkjs/32-tipos-and-gramatica.md)
+    * [3.4 Async & Performance](chapter1/3-en-ydkjs/34-async-and-performance.md)
 
