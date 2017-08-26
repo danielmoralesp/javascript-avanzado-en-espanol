@@ -38,5 +38,6 @@
 * [II- Scope & Closures](ii-scope-and-closures.md)
   * [0- Prefacio](ii-scope-and-closures/0-prefacio.md)
   * [1- ¿Qué es el Scope?](ii-scope-and-closures/1-que-es-el-scope.md)
-    * [1.2 Teoría del Compilador](ii-scope-and-closures/1-que-es-el-scope/12-teoria-del-compilador.md)
+    * [1.1 Teoría del Compilador](ii-scope-and-closures/1-que-es-el-scope/12-teoria-del-compilador.md)
+    * [1.2 Entendiendo el Scope](ii-scope-and-closures/1-que-es-el-scope/12-entendiendo-el-scope.md)
 
