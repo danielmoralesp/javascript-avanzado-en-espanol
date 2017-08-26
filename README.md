@@ -20,3 +20,6 @@ Aunque ésta es una serie de libros de Javascript Avanzado, tambien puede empeza
 
 * Si usted tiene nivel básico en Programación y/o en Javascript = Vaya al Libro \# 1 - Up & Going
 * Si usted tiene un nivel básico/medio/avanzado en Programación y/o en Javascrip = Vaya al Libro \# 2 - Scope & Closures
+
+
+
