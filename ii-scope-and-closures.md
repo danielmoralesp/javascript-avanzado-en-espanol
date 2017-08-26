@@ -14,9 +14,9 @@ Desafortunadamente, ahora soy considerado un "profesional" y paso mis días haci
 
 Y eso es exactamente por lo que estoy tan entusiasmado con la serie de libros de Kyle "You Do not Know JS". Porque tiene razón. No conozco JS. Utilizo Javascript en el dia a dia, de adentro hacia fuera y lo he hecho por muchos años, pero lo entiendo realmente? No. Claro, entiendo mucho y a menudo leo las especificaciones y las listas de correo, pero no, no entiendo tanto .
 
-Alcance y cierres, es un comienzo brillante de la serie. Está muy bien dirigido a personas como yo \(y espero que tú también\), no enseña JavaScript como si nunca lo hubieras usado, pero te hace darte cuenta de lo poco que sabes sobre el funcionamiento interno.
+Scope y Closures, es un comienzo brillante de la serie. Está muy bien dirigido a personas como yo \(y espero que hacia ti también\), no enseña JavaScript como si nunca lo hubieras usado, y te hace darte cuenta de lo poco que sabes sobre el funcionamiento interno.
 
-También está saliendo en el momento perfecto, ES6 finalmente se está estableciendo y la aplicación a través de los navegadores va bien. Si aún no has aprendido las nuevas características \(como let y const\), este libro será una gran introducción.
+También está saliendo en el momento perfecto, ES6 finalmente se está estableciendo y la aplicación a través de los navegadores va bien. Si aún no has aprendido las nuevas características \(como `let` y `const`\), este libro será una gran introducción.
 
-Así que espero que disfruten de este libro, pero más que la forma en que Kyle piensa críticamente acerca de cómo funciona cada pequeño fragmento del lenguaje, fluirá en su forma de pensar y flujo de trabajo general. En lugar de utilizar la antena, averiguar cómo y por qué funciona.
+Así que espero que disfruten de este libro, pero más que la forma en que Kyle piensa críticamente acerca de cómo funciona cada pequeño fragmento del lenguaje, fluirá en su forma de pensar y flujo de trabajo en general. En lugar de utilizar la antenna, averiguar cómo y por qué funciona.
 
