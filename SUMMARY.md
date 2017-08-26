@@ -41,4 +41,5 @@
     * [1.1 Teoría del Compilador](ii-scope-and-closures/1-que-es-el-scope/12-teoria-del-compilador.md)
     * [1.2 Entendiendo el Scope](ii-scope-and-closures/1-que-es-el-scope/12-entendiendo-el-scope.md)
     * [1.3 Scopes Anidados](ii-scope-and-closures/1-que-es-el-scope/13-scopes-anidados.md)
+    * [1.4 Errores](ii-scope-and-closures/1-que-es-el-scope/14-errores.md)
 
