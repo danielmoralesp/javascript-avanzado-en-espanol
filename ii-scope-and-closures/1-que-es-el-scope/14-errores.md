@@ -8,8 +8,8 @@ Considere:
 
 ```js
 function foo(a) {
-	console.log( a + b );
-	b = a;
+    console.log( a + b );
+    b = a;
 }
 
 foo( 2 );
@@ -28,6 +28,4 @@ El "Modo estricto" \[^note-strictmode\], que se agregó en ES5, tiene una serie 
 Ahora, si se encuentra una variable para una búsqueda RHS, pero se intenta hacer algo con su valor que es imposible, como intentar ejecutar como función un valor sin función o hacer referencia a una propiedad en un valor `null` o u`ndefined` , entonces el Motor arroja un tipo diferente de error, llamado `TypeError`.
 
 `ReferenceError` es Scope resolution-failure related, mientras que `TypeError` implica que la resolución Scope tuvo éxito, pero que se ha intentado una acción ilegal/imposible contra el resultado.
-
-
 
