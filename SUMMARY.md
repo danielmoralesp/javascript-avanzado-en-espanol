@@ -46,4 +46,5 @@
   * [2- Lexical Scope](ii-scope-and-closures/2-lexical-scope.md)
     * [2.1 Tiempo de Lex](ii-scope-and-closures/2-lexical-scope/21-hora-de-lex.md)
     * [2.2 Trucos léxicos](ii-scope-and-closures/2-lexical-scope/22-trucos-lexicos.md)
+    * [2.3 Revisión](ii-scope-and-closures/2-lexical-scope/23-revision.md)
 
