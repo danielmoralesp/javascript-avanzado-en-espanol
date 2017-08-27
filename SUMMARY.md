@@ -44,5 +44,5 @@
     * [1.4 Errores](ii-scope-and-closures/1-que-es-el-scope/14-errores.md)
     * [1.5 Revisión](ii-scope-and-closures/1-que-es-el-scope/15-revision.md)
   * [2- Lexical Scope](ii-scope-and-closures/2-lexical-scope.md)
-    * [2.1 Hora de Lex](ii-scope-and-closures/2-lexical-scope/21-hora-de-lex.md)
+    * [2.1 Tiempo de Lex](ii-scope-and-closures/2-lexical-scope/21-hora-de-lex.md)
 
