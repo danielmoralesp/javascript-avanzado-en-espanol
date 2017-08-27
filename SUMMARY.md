@@ -49,4 +49,5 @@
     * [2.3 Revisión](ii-scope-and-closures/2-lexical-scope/23-revision.md)
   * [3- Function vs. Block Scope](ii-scope-and-closures/3-function-vs-block-scope.md)
     * [3.1 Ámbito de las funciones](ii-scope-and-closures/3-function-vs-block-scope/31-ambito-de-las-funciones.md)
+    * [3.2 Ocultación en el ámbito común](ii-scope-and-closures/3-function-vs-block-scope/32-ocultacion-en-el-ambito-comun.md)
 
