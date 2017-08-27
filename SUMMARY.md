@@ -47,4 +47,6 @@
     * [2.1 Tiempo de Lex](ii-scope-and-closures/2-lexical-scope/21-hora-de-lex.md)
     * [2.2 Trucos léxicos](ii-scope-and-closures/2-lexical-scope/22-trucos-lexicos.md)
     * [2.3 Revisión](ii-scope-and-closures/2-lexical-scope/23-revision.md)
+  * [3- Function vs. Block Scope](ii-scope-and-closures/3-function-vs-block-scope.md)
+    * [3.1 Ámbito de las funciones](ii-scope-and-closures/3-function-vs-block-scope/31-ambito-de-las-funciones.md)
 
