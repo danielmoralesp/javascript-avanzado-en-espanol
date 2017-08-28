@@ -57,4 +57,5 @@
     * [4.1 ¿El Huevo o la Gallina?](ii-scope-and-closures/4-hoisting/41-el-huevo-o-la-gallina.md)
     * [4.2 El compilador pega de nuevo](ii-scope-and-closures/4-hoisting/42-el-compilador-pega-de-nuevo.md)
     * [4.3 Funciones Primero](ii-scope-and-closures/4-hoisting/43-funciones-primero.md)
+    * [4.4 Revisión](ii-scope-and-closures/4-hoisting/44-revision.md)
 
