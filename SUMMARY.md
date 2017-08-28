@@ -58,4 +58,6 @@
     * [4.2 El compilador pega de nuevo](ii-scope-and-closures/4-hoisting/42-el-compilador-pega-de-nuevo.md)
     * [4.3 Funciones Primero](ii-scope-and-closures/4-hoisting/43-funciones-primero.md)
     * [4.4 Revisión](ii-scope-and-closures/4-hoisting/44-revision.md)
+  * [5- Scope Closure](ii-scope-and-closures/5-scope-closure.md)
+    * [5.1  Ilustración](ii-scope-and-closures/5-scope-closure/51-ilustraci-on.md)
 
