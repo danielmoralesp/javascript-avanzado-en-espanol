@@ -66,4 +66,7 @@
     * [5.5 Módulos](ii-scope-and-closures/5-scope-closure/55-modulos.md)
     * [5.6 Revisión](ii-scope-and-closures/5-scope-closure/56-revision.md)
   * [6- Scope Dinámico](ii-scope-and-closures/6-scope-dinamico.md)
+  * [7- Ámbito de bloque de Polyfilling](ii-scope-and-closures/7-alcance-del-bloque-de-polyfilling.md)
+    * [7.1 Traceur](ii-scope-and-closures/7-alcance-del-bloque-de-polyfilling/71-traceur.md)
+    * 7.2 Bloques implícitos vs. explícitos
 
