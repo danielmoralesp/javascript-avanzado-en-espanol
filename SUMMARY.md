@@ -72,4 +72,5 @@
     * [7.3 Rendimiento](ii-scope-and-closures/7-alcance-del-bloque-de-polyfilling/73-rendimiento.md)
   * [8- Lexical-this](ii-scope-and-closures/8-lexical-this.md)
 * [III- this & Object Prototypes](iii-this-and-object-prototypes.md)
+  * [0- Prefacio](iii-this-and-object-prototypes/0-prefacio.md)
 
