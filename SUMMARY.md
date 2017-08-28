@@ -60,4 +60,5 @@
     * [4.4 Revisión](ii-scope-and-closures/4-hoisting/44-revision.md)
   * [5- Scope Closure](ii-scope-and-closures/5-scope-closure.md)
     * [5.1  Ilustración](ii-scope-and-closures/5-scope-closure/51-ilustraci-on.md)
+    * [5.2 Nitty Gritty](ii-scope-and-closures/5-scope-closure/52-nitty-gritty.md)
 
