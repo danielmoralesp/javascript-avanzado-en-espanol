@@ -68,5 +68,6 @@
   * [6- Scope Dinámico](ii-scope-and-closures/6-scope-dinamico.md)
   * [7- Ámbito de bloque de Polyfilling](ii-scope-and-closures/7-alcance-del-bloque-de-polyfilling.md)
     * [7.1 Traceur](ii-scope-and-closures/7-alcance-del-bloque-de-polyfilling/71-traceur.md)
-    * 7.2 Bloques implícitos vs. explícitos
+    * [7.2 Bloques implícitos vs. explícitos](ii-scope-and-closures/7-alcance-del-bloque-de-polyfilling/72-bloques-implicitos-vs-explicitos.md)
+    * [7.3 Rendimiento](ii-scope-and-closures/7-alcance-del-bloque-de-polyfilling/73-rendimiento.md)
 

@@ -6,12 +6,12 @@ Google mantiene un proyecto llamado "Traceur" \[^ note-traceur\], que tiene la t
 
 ```js
 {
-	try {
-		throw undefined;
-	} catch (a) {
-		a = 2;
-		console.log( a );
-	}
+    try {
+        throw undefined;
+    } catch (a) {
+        a = 2;
+        console.log( a );
+    }
 }
 
 console.log( a );
