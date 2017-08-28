@@ -52,4 +52,5 @@
     * [3.2 Ocultación en el ámbito común](ii-scope-and-closures/3-function-vs-block-scope/32-ocultacion-en-el-ambito-comun.md)
     * [3.3 Funciones como ámbitos](ii-scope-and-closures/3-function-vs-block-scope/33-funciones-como-ambitos.md)
     * [3.4 Bloques como ámbitos](ii-scope-and-closures/3-function-vs-block-scope/34-bloques-como-ambitos.md)
+    * [3.5 Revisión \(TL; DR\)](ii-scope-and-closures/3-function-vs-block-scope/35-revision-tl-dr.md)
 
