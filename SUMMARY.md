@@ -53,4 +53,7 @@
     * [3.3 Funciones como ámbitos](ii-scope-and-closures/3-function-vs-block-scope/33-funciones-como-ambitos.md)
     * [3.4 Bloques como ámbitos](ii-scope-and-closures/3-function-vs-block-scope/34-bloques-como-ambitos.md)
     * [3.5 Revisión \(TL; DR\)](ii-scope-and-closures/3-function-vs-block-scope/35-revision-tl-dr.md)
+  * [4- Hoisting](ii-scope-and-closures/4-hoisting.md)
+    * [4.1 ¿El Huevo o la Gallina?](ii-scope-and-closures/4-hoisting/41-el-huevo-o-la-gallina.md)
+    * [4.2 El compilador pega de nuevo](ii-scope-and-closures/4-hoisting/42-el-compilador-pega-de-nuevo.md)
 
