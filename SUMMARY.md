@@ -63,4 +63,5 @@
     * [5.2 Nitty Gritty](ii-scope-and-closures/5-scope-closure/52-nitty-gritty.md)
     * [5.3 Ahora puedo ver](ii-scope-and-closures/5-scope-closure/53-ahora-puedo-ver.md)
     * [5.4 Loops + Closure](ii-scope-and-closures/5-scope-closure/54-loops-+-closure.md)
+    * [5.5 Módulos](ii-scope-and-closures/5-scope-closure/55-modulos.md)
 
