@@ -50,4 +50,5 @@
   * [3- Function vs. Block Scope](ii-scope-and-closures/3-function-vs-block-scope.md)
     * [3.1 Ámbito de las funciones](ii-scope-and-closures/3-function-vs-block-scope/31-ambito-de-las-funciones.md)
     * [3.2 Ocultación en el ámbito común](ii-scope-and-closures/3-function-vs-block-scope/32-ocultacion-en-el-ambito-comun.md)
+    * [3.3 Funciones como ámbitos](ii-scope-and-closures/3-function-vs-block-scope/33-funciones-como-ambitos.md)
 
