@@ -71,4 +71,5 @@
     * [7.2 Bloques implícitos vs. explícitos](ii-scope-and-closures/7-alcance-del-bloque-de-polyfilling/72-bloques-implicitos-vs-explicitos.md)
     * [7.3 Rendimiento](ii-scope-and-closures/7-alcance-del-bloque-de-polyfilling/73-rendimiento.md)
   * [8- Lexical-this](ii-scope-and-closures/8-lexical-this.md)
+* [III- this & Object Prototypes](iii-this-and-object-prototypes.md)
 
