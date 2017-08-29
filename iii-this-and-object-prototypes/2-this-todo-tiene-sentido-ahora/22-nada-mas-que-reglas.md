@@ -113,12 +113,12 @@ Considere:
 
 ```js
 function foo() {
-	console.log( this.a );
+    console.log( this.a );
 }
 
 var obj = {
-	a: 2,
-	foo: foo
+    a: 2,
+    foo: foo
 };
 
 var bar = obj.foo; // function reference/alias!
@@ -134,18 +134,18 @@ La forma más sutil, más común y más inesperada en que esto ocurre es cuando 
 
 ```js
 function foo() {
-	console.log( this.a );
+    console.log( this.a );
 }
 
 function doFoo(fn) {
-	// `fn` is just another reference to `foo`
+    // `fn` is just another reference to `foo`
 
-	fn(); // <-- call-site!
+    fn(); // <-- call-site!
 }
 
 var obj = {
-	a: 2,
-	foo: foo
+    a: 2,
+    foo: foo
 };
 
 var a = "oops, global"; // `a` also property on global object
@@ -159,12 +159,12 @@ El paso de parámetros es simplemente en una asignación implícita, y puesto qu
 
 ```js
 function foo() {
-	console.log( this.a );
+    console.log( this.a );
 }
 
 var obj = {
-	a: 2,
-	foo: foo
+    a: 2,
+    foo: foo
 };
 
 var a = "oops, global"; // `a` also property on global object
@@ -176,8 +176,8 @@ Piense en esta pseudo-implementación teórica cruda de `setTimeout()` proporcio
 
 ```js
 function setTimeout(fn,delay) {
-	// wait (somehow) for `delay` milliseconds
-	fn(); // <-- call-site!
+    // wait (somehow) for `delay` milliseconds
+    fn(); // <-- call-site!
 }
 ```
 
@@ -199,11 +199,11 @@ Considere:
 
 ```js
 function foo() {
-	console.log( this.a );
+    console.log( this.a );
 }
 
 var obj = {
-	a: 2
+    a: 2
 };
 
 foo.call( obj ); // 2
@@ -216,4 +216,108 @@ Si pasa un valor primitivo simple \(de tipo `string`, `boolean` o `number`\) com
 **Nota**: Con respecto a la vinculación de `this`, el `call(..)` y  `apply(..)` son idénticas. Ellos se comportan de manera diferente con sus parámetros adicionales, pero eso no es algo que nos importa en este momento.
 
 Desafortunadamente, la vinculación explícita por sí sola todavía no ofrece ninguna solución al problema mencionado anteriormente, de una función "perder" su intención de vinculación `this`, o simplemente tenerla pavimentada por un framework, etc.
+
+#### Vinculación dura \(Hard Binding\)
+
+Pero un patrón de variación en torno a la vinculación explícita realmente hace el truco. Considere:
+
+```js
+function foo() {
+	console.log( this.a );
+}
+
+var obj = {
+	a: 2
+};
+
+var bar = function() {
+	foo.call( obj );
+};
+
+bar(); // 2
+setTimeout( bar, 100 ); // 2
+
+// `bar` hard binds `foo`'s `this` to `obj`
+// so that it cannot be overriden
+bar.call( window ); // 2
+```
+
+Veamos cómo funciona esta variación. Creamos una función `bar() `que, internamente, llama manualmente a `foo.call(obj)`, invocando forzosamente `foo` con la vinculación `obj` para `this`. No importa cómo invoque más tarde la función `bar()`, siempre se invocará manualmente `foo` con `obj`. Esta vinculación es tanto explícita como fuerte \(hard\), por lo que lo llamamos vinculación dura \(hard binding\).
+
+La forma más típica de envolver una función con una vinculación dura crea un paso a través de cualquier argumento pasado y cualquier valor de retorno recibido:
+
+```js
+function foo(something) {
+	console.log( this.a, something );
+	return this.a + something;
+}
+
+var obj = {
+	a: 2
+};
+
+var bar = function() {
+	return foo.apply( obj, arguments );
+};
+
+var b = bar( 3 ); // 2 3
+console.log( b ); // 5
+```
+
+Otra forma de expresar este patrón es crear un ayudante reutilizable:
+
+```js
+function foo(something) {
+	console.log( this.a, something );
+	return this.a + something;
+}
+
+// simple `bind` helper
+function bind(fn, obj) {
+	return function() {
+		return fn.apply( obj, arguments );
+	};
+}
+
+var obj = {
+	a: 2
+};
+
+var bar = bind( foo, obj );
+
+var b = bar( 3 ); // 2 3
+console.log( b ); // 5
+```
+
+Dado que la vinculación dura es un patrón tan común, se proporciona con una utilidad integrada como ES5: `Function.prototype.bind`, y se utiliza de esta manera:
+
+```js
+unction foo(something) {
+	console.log( this.a, something );
+	return this.a + something;
+}
+
+var obj = {
+	a: 2
+};
+
+var bar = foo.bind( obj );
+
+var b = bar( 3 ); // 2 3
+console.log( b ); // 5
+```
+
+`bind(..)` devuelve una nueva función que está codificada para llamar a la función original con  el contexto `this` como se especificó.
+
+**Nota**: A partir de ES6, la función hard-bound producida por `bind(..)` tiene una propiedad `.name` que deriva de la función de destino original. Por ejemplo: `bar = foo.bind(..)` debe tener un valor `bar.name` de "`bound foo`", que es el nombre de la llamada a la función que debe aparecer en un stack trace.
+
+#### "Contextos" de API Call
+
+Muchas funciones de las bibliotecas, y de hecho muchas nuevas funciones incorporadas en el lenguaje JavaScript y el entorno del host, proporcionan un parámetro opcional, generalmente llamado "contexto", que está diseñado como una solución para no tener que usar bind. \) Para asegurar que su función de devolución de llamada utilice un particular esto.
+
+Por ejemplo:
+
+
+
+
 
