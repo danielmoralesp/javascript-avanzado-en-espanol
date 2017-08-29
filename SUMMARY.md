@@ -80,4 +80,5 @@
     * [1.4 Revisión](iii-this-and-object-prototypes/1-this-o-that/14-revision.md)
   * [2- this, todo tiene sentido ahora!](iii-this-and-object-prototypes/2-this-todo-tiene-sentido-ahora.md)
     * [2.1 Sitio de llamada](iii-this-and-object-prototypes/2-this-todo-tiene-sentido-ahora/21-sitio-de-llamada.md)
+    * [2.2 Nada más que reglas](iii-this-and-object-prototypes/2-this-todo-tiene-sentido-ahora/22-nada-mas-que-reglas.md)
 
