@@ -81,4 +81,5 @@
   * [2- this, todo tiene sentido ahora!](iii-this-and-object-prototypes/2-this-todo-tiene-sentido-ahora.md)
     * [2.1 Sitio de llamada](iii-this-and-object-prototypes/2-this-todo-tiene-sentido-ahora/21-sitio-de-llamada.md)
     * [2.2 Nada más que reglas](iii-this-and-object-prototypes/2-this-todo-tiene-sentido-ahora/22-nada-mas-que-reglas.md)
+    * [2.3 Todo en orden](iii-this-and-object-prototypes/2-this-todo-tiene-sentido-ahora/23-todo-en-orden.md)
 
