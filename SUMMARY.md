@@ -78,4 +78,6 @@
     * [1.2 Confusiones](iii-this-and-object-prototypes/1-this-o-that/12-confusiones.md)
     * [1.3 ¿Que es this?](iii-this-and-object-prototypes/1-this-o-that/13-que-es-this.md)
     * [1.4 Revisión](iii-this-and-object-prototypes/1-this-o-that/14-revision.md)
+  * [2- this, todo tiene sentido ahora!](iii-this-and-object-prototypes/2-this-todo-tiene-sentido-ahora.md)
+    * [2.1 Sitio de llamada](iii-this-and-object-prototypes/2-this-todo-tiene-sentido-ahora/21-sitio-de-llamada.md)
 
