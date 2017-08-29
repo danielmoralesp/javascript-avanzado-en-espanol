@@ -223,15 +223,15 @@ Pero un patrón de variación en torno a la vinculación explícita realmente ha
 
 ```js
 function foo() {
-	console.log( this.a );
+    console.log( this.a );
 }
 
 var obj = {
-	a: 2
+    a: 2
 };
 
 var bar = function() {
-	foo.call( obj );
+    foo.call( obj );
 };
 
 bar(); // 2
@@ -242,22 +242,22 @@ setTimeout( bar, 100 ); // 2
 bar.call( window ); // 2
 ```
 
-Veamos cómo funciona esta variación. Creamos una función `bar() `que, internamente, llama manualmente a `foo.call(obj)`, invocando forzosamente `foo` con la vinculación `obj` para `this`. No importa cómo invoque más tarde la función `bar()`, siempre se invocará manualmente `foo` con `obj`. Esta vinculación es tanto explícita como fuerte \(hard\), por lo que lo llamamos vinculación dura \(hard binding\).
+Veamos cómo funciona esta variación. Creamos una función `bar()`que, internamente, llama manualmente a `foo.call(obj)`, invocando forzosamente `foo` con la vinculación `obj` para `this`. No importa cómo invoque más tarde la función `bar()`, siempre se invocará manualmente `foo` con `obj`. Esta vinculación es tanto explícita como fuerte \(hard\), por lo que lo llamamos vinculación dura \(hard binding\).
 
 La forma más típica de envolver una función con una vinculación dura crea un paso a través de cualquier argumento pasado y cualquier valor de retorno recibido:
 
 ```js
 function foo(something) {
-	console.log( this.a, something );
-	return this.a + something;
+    console.log( this.a, something );
+    return this.a + something;
 }
 
 var obj = {
-	a: 2
+    a: 2
 };
 
 var bar = function() {
-	return foo.apply( obj, arguments );
+    return foo.apply( obj, arguments );
 };
 
 var b = bar( 3 ); // 2 3
@@ -268,19 +268,19 @@ Otra forma de expresar este patrón es crear un ayudante reutilizable:
 
 ```js
 function foo(something) {
-	console.log( this.a, something );
-	return this.a + something;
+    console.log( this.a, something );
+    return this.a + something;
 }
 
 // simple `bind` helper
 function bind(fn, obj) {
-	return function() {
-		return fn.apply( obj, arguments );
-	};
+    return function() {
+        return fn.apply( obj, arguments );
+    };
 }
 
 var obj = {
-	a: 2
+    a: 2
 };
 
 var bar = bind( foo, obj );
@@ -293,12 +293,12 @@ Dado que la vinculación dura es un patrón tan común, se proporciona con una u
 
 ```js
 unction foo(something) {
-	console.log( this.a, something );
-	return this.a + something;
+    console.log( this.a, something );
+    return this.a + something;
 }
 
 var obj = {
-	a: 2
+    a: 2
 };
 
 var bar = foo.bind( obj );
@@ -313,11 +313,68 @@ console.log( b ); // 5
 
 #### "Contextos" de API Call
 
-Muchas funciones de las bibliotecas, y de hecho muchas nuevas funciones incorporadas en el lenguaje JavaScript y el entorno del host, proporcionan un parámetro opcional, generalmente llamado "contexto", que está diseñado como una solución para no tener que usar bind. \) Para asegurar que su función de devolución de llamada utilice un particular esto.
+Muchas funciones de las bibliotecas, y de hecho muchas nuevas funciones incorporadas en el lenguaje JavaScript y el entorno del host, proporcionan un parámetro opcional, generalmente llamado "context", que está diseñado como una solución para no tener que usar `bind(..)` Para asegurar que su función de devolución de llamada utilice un `this` en particular.
 
 Por ejemplo:
 
+```js
+function foo(el) {
+	console.log( el, this.id );
+}
 
+var obj = {
+	id: "awesome"
+};
+
+// use `obj` como `this` para la llamada `foo(..)`
+[1, 2, 3].forEach( foo, obj ); // 1 awesome  2 awesome  3 awesome
+```
+
+Internamente, estas diversas funciones casi seguramente usan una vinculación explícito vía  `call(..)` o  `apply(..)`, ahorrándole el problema.
+
+### `new` Binding
+
+La cuarta y última regla para la vinculación `this` nos obliga a repensar un concepto erróneo muy común sobre las funciones y los objetos en JavaScript.
+
+En los lenguajes tradicionales orientados a clases, los "constructores" son métodos especiales asociados a las clases, que cuando la clase se instancia con un operador `new`, se llama al constructor de esa clase. Esto normalmente se parece a algo así:
+
+```js
+something = new MyClass(..);
+```
+
+JavaScript tiene un operador `new`, y el patrón de código para usarlo parece idéntico a lo que vemos en esos lenguajes orientados a clases; La mayoría de los desarrolladores asumen que el mecanismo de JavaScript está haciendo algo similar. Sin embargo, realmente no hay ninguna conexión a la funcionalidad orientada a clases implicada por el uso de `new` en JS.
+
+En primer lugar, vamos a volver a definir lo que es un "constructor" en JavaScript. En JS, los constructores son sólo funciones que pasan a ser llamadas con el operador `new` delante de ellas. No están unidos a las clases, ni están instanciando una clase. Ni siquiera son tipos especiales de funciones. Son sólo funciones regulares que, en esencia, son secuestradas por el uso de `new` en su invocación.
+
+Por ejemplo, la función `Number(..)` que actúa como constructor, citando desde la especificación ES5.1:
+
+> 15.7.2 El Constructor de Números
+>
+> Cuando Number se llama como parte de una expresión `new`, es un constructor: inicializa el objeto recién creado.
+
+Por lo tanto, casi cualquier función, incluyendo las funciones de objetos integradas como `Number(..)` \(véase el capítulo 3\) se puede llamar con `new` delante de ella, y hace que la función llamada sea una llamada al constructor. Esta es una distinción importante pero sutil: realmente no hay tal cosa como "funciones constructoras", sino más bien llamadas de construcción de funciones.
+
+Cuando se invoca una función con `new` delante de ella, también conocida como llamada del constructor, se ejecutan automáticamente las siguientes acciones:
+
+1. Un nuevo objeto se crea \(aka, construido\) en el aire
+2. El objeto de nueva construcción es \[\[Prototype\]\] - linked
+3. El objeto de nueva construcción se establece como el enlace de esa llamada de función
+4. A menos que la función devuelva su propio **objeto** alternativo, la llamada de función invocada automáticamente devolverá el objeto recién construido.
+
+Los pasos 1, 3 y 4 se aplican a nuestra discusión actual. Vamos a saltar el paso 2 por ahora y volver a él en el capítulo 5.
+
+Considere este código:
+
+```js
+function foo(a) {
+	this.a = a;
+}
+
+var bar = new foo( 2 );
+console.log( bar.a ); // 2
+```
+
+Al llamar a `foo(...)` con un `new` delante de él, hemos construido un nuevo objeto y establecemos ese nuevo objeto como el de la llamada de `foo(..)`. Por tanto `new` es la manera final en que una llamada a la función `this` puede ser vinculada. Llamaremos a esto nueva vinculación \(new banding\).
 
 
 
