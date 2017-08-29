@@ -73,4 +73,6 @@
   * [8- Lexical-this](ii-scope-and-closures/8-lexical-this.md)
 * [III- this & Object Prototypes](iii-this-and-object-prototypes.md)
   * [0- Prefacio](iii-this-and-object-prototypes/0-prefacio.md)
+  * [1- this o That?](iii-this-and-object-prototypes/1-this-o-that.md)
+    * [1.1 ¿Porque this?](iii-this-and-object-prototypes/1-this-o-that/11-porque-this.md)
 
