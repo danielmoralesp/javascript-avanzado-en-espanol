@@ -77,4 +77,5 @@
     * [1.1 ¿Porque this?](iii-this-and-object-prototypes/1-this-o-that/11-porque-this.md)
     * [1.2 Confusiones](iii-this-and-object-prototypes/1-this-o-that/12-confusiones.md)
     * [1.3 ¿Que es this?](iii-this-and-object-prototypes/1-this-o-that/13-que-es-this.md)
+    * [1.4 Revisión](iii-this-and-object-prototypes/1-this-o-that/14-revision.md)
 
