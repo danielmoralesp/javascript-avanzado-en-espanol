@@ -12,7 +12,7 @@ Considere este código:
 
 ```js
 function foo() {
-	console.log( this.a );
+    console.log( this.a );
 }
 
 var a = 2;
@@ -30,9 +30,9 @@ Si el `strict mode` está en efecto, el objeto global no es elegible para el enl
 
 ```js
 function foo() {
-	"use strict";
+    "use strict";
 
-	console.log( this.a );
+    console.log( this.a );
 }
 
 var a = 2;
@@ -44,15 +44,15 @@ Un detalle sutil pero importante es: aunque el conjunto de reglas de vinculació
 
 ```js
 function foo() {
-	console.log( this.a );
+    console.log( this.a );
 }
 
 var a = 2;
 
 (function(){
-	"use strict";
+    "use strict";
 
-	foo(); // 2
+    foo(); // 2
 })();
 ```
 
@@ -66,12 +66,12 @@ Considere:
 
 ```js
 function foo() {
-	console.log( this.a );
+    console.log( this.a );
 }
 
 var obj = {
-	a: 2,
-	foo: foo
+    a: 2,
+    foo: foo
 };
 
 obj.foo(); // 2
@@ -89,25 +89,131 @@ Sólo el nivel superior / último de una cadena de referencia de propiedad de ob
 
 ```js
 function foo() {
-	console.log( this.a );
+    console.log( this.a );
 }
 
 var obj2 = {
-	a: 42,
-	foo: foo
+    a: 42,
+    foo: foo
 };
 
 var obj1 = {
-	a: 2,
-	obj2: obj2
+    a: 2,
+    obj2: obj2
 };
 
 obj1.obj2.foo(); // 42
 ```
 
+#### Implícitamente perdido
 
+Una de las frustraciones más comunes que crea la vinculación de `this` es cuando una función implícitamente vinculada pierde esa vinculación, lo que generalmente significa que se vuelve a la vinculación por defecto, ya sea del objeto global o `undefined`, dependiendo del `strict mode`.
 
+Considere:
 
+```js
+function foo() {
+	console.log( this.a );
+}
 
+var obj = {
+	a: 2,
+	foo: foo
+};
 
+var bar = obj.foo; // function reference/alias!
+
+var a = "oops, global"; // `a` also property on global object
+
+bar(); // "oops, global"
+```
+
+A pesar de que `bar` parece ser una referencia a `obj.foo`, de hecho, es realmente sólo otra referencia a la propia `foo`. Además, el call-site es lo que importa, y el call-site es `bar()`, que es una llamada simple, no decorada y por lo tanto se aplica el enlace por defecto.
+
+La forma más sutil, más común y más inesperada en que esto ocurre es cuando consideramos pasar una función de devolución de llamada:
+
+```js
+function foo() {
+	console.log( this.a );
+}
+
+function doFoo(fn) {
+	// `fn` is just another reference to `foo`
+
+	fn(); // <-- call-site!
+}
+
+var obj = {
+	a: 2,
+	foo: foo
+};
+
+var a = "oops, global"; // `a` also property on global object
+
+doFoo( obj.foo ); // "oops, global"
+```
+
+El paso de parámetros es simplemente en una asignación implícita, y puesto que estamos pasando una función, es una asignación implícita de referencia, de modo que el resultado final es el mismo que el fragmento anterior.
+
+¿Qué pasa si la función a la que está pasando su devolución de llamada no es suya, sino integrada en el lenguaje? No hay diferencia, da el mismo resultado.
+
+```js
+function foo() {
+	console.log( this.a );
+}
+
+var obj = {
+	a: 2,
+	foo: foo
+};
+
+var a = "oops, global"; // `a` also property on global object
+
+setTimeout( obj.foo, 100 ); // "oops, global"
+```
+
+Piense en esta pseudo-implementación teórica cruda de `setTimeout()` proporcionada como un built-in del entorno JavaScript:
+
+```js
+function setTimeout(fn,delay) {
+	// wait (somehow) for `delay` milliseconds
+	fn(); // <-- call-site!
+}
+```
+
+Es bastante común que nuestras devoluciones de funciones pierdan su vinculación `this`, como acabamos de ver. Pero otra manera en que `this` puede sorprendernos es cuando la función que hemos pasado a nuestra devolución de llamada a intencionalmente cambia `this` para la llamada. Los manejadores de eventos en las bibliotecas de JavaScript populares son muy aficionados a forzar su devolución de llamada a tener un `this`  al que apunta, por ejemplo, al elemento DOM que activó el evento. Mientras que a veces puede ser útil, otras veces puede ser francamente exasperante. Lamentablemente, estas herramientas rara vez le permiten elegir.
+
+De cualquier manera `this` se cambia inesperadamente, usted no está realmente en control de cómo su referencia de función de devolución de llamada se ejecutará, así que usted no tiene ninguna manera \(aún\) de controlar el call-site para dar su vinculación deseada. Veremos pronto una manera de "arreglar" ese problema arreglando `this`.
+
+### Vinculación explícita
+
+Con la vinculación implícita como acabamos de ver, tuvimos que mutar el objeto en cuestión para incluir una referencia sobre sí misma a la función, y usar esta referencia de función de propiedad para indirectamente \(implícitamente\) vincular `this` con el objeto.
+
+¿Pero, qué pasa si usted quiere forzar una llamada de la función para utilizar un objeto particular para este enlace, sin poner una referencia de la función de la característica en el objeto?
+
+Todas las funciones del lenguaje tienen algunas utilidades a su disposición \(a través de su \[\[Prototype\]\]\) - más sobre esto más adelante\) que pueden ser útiles para esta tarea. Específicamente, las funciones tienen métodos de `call(..)` y de `apply(..)`. Técnicamente, los ambientes de host JavaScript a veces proporcionan funciones que son lo suficientemente especiales \(una forma amable de decirlo!\) Que no tienen dicha funcionalidad. Pero son pocos. La gran mayoría de las funciones proporcionadas, y ciertamente todas las funciones que va a crear, tienen acceso a `call(..)` y  `apply(..)`.
+
+¿Cómo funcionan estas utilidades? Ambos toman, como su primer parámetro, un objeto para usar para `this`, y luego invocan la función con el `this` especificado. Puesto que usted está indicando directamente lo que usted quiere que `this` sea, lo llamamos enlace explícito.
+
+Considere:
+
+```js
+function foo() {
+	console.log( this.a );
+}
+
+var obj = {
+	a: 2
+};
+
+foo.call( obj ); // 2
+```
+
+Invocando `foo` con una vinculación explícita por `foo.call(..)` nos permite forzar a su `this` a ser `obj`.
+
+Si pasa un valor primitivo simple \(de tipo `string`, `boolean` o `number`\) como este enlace, el valor primitivo se envuelve en su objeto-forma \(`new String(..)`, `new Boolean(..)` o `new Number(..)`, respectivamente\). Esto se refiere a menudo como "boxing".
+
+**Nota**: Con respecto a la vinculación de `this`, el `call(..)` y  `apply(..)` son idénticas. Ellos se comportan de manera diferente con sus parámetros adicionales, pero eso no es algo que nos importa en este momento.
+
+Desafortunadamente, la vinculación explícita por sí sola todavía no ofrece ninguna solución al problema mencionado anteriormente, de una función "perder" su intención de vinculación `this`, o simplemente tenerla pavimentada por un framework, etc.
 
