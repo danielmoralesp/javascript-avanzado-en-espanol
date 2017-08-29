@@ -75,4 +75,6 @@
   * [0- Prefacio](iii-this-and-object-prototypes/0-prefacio.md)
   * [1- this o That?](iii-this-and-object-prototypes/1-this-o-that.md)
     * [1.1 ¿Porque this?](iii-this-and-object-prototypes/1-this-o-that/11-porque-this.md)
+    * [1.2 Confusiones](iii-this-and-object-prototypes/1-this-o-that/12-confusiones.md)
+    * [1.3 ¿Que es this?](iii-this-and-object-prototypes/1-this-o-that/13-que-es-this.md)
 
