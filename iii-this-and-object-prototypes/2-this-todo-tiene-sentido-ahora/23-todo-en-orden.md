@@ -34,11 +34,11 @@ Ahora, sólo necesitamos averiguar dónde se ajusta el nuevo vinculo en la prece
 
 ```js
 function foo(something) {
-	this.a = something;
+    this.a = something;
 }
 
 var obj1 = {
-	foo: foo
+    foo: foo
 };
 
 var obj2 = {};
@@ -66,7 +66,7 @@ Vamos a revisar:
 
 ```js
 function foo(something) {
-	this.a = something;
+    this.a = something;
 }
 
 var obj1 = {};
@@ -86,9 +86,9 @@ Esto debería ser sorprendente si vuelves a nuestro "falso" `bind` helper:
 
 ```js
 function bind(fn, obj) {
-	return function() {
-		fn.apply( obj, arguments );
-	};
+    return function() {
+        fn.apply( obj, arguments );
+    };
 }
 ```
 
@@ -98,38 +98,38 @@ Pero el built-in `Function.prototype.bind(...)` como ES5 es más sofisticado, un
 
 ```js
 if (!Function.prototype.bind) {
-	Function.prototype.bind = function(oThis) {
-		if (typeof this !== "function") {
-			// closest thing possible to the ECMAScript 5
-			// internal IsCallable function
-			throw new TypeError( "Function.prototype.bind - what " +
-				"is trying to be bound is not callable"
-			);
-		}
+    Function.prototype.bind = function(oThis) {
+        if (typeof this !== "function") {
+            // closest thing possible to the ECMAScript 5
+            // internal IsCallable function
+            throw new TypeError( "Function.prototype.bind - what " +
+                "is trying to be bound is not callable"
+            );
+        }
 
-		var aArgs = Array.prototype.slice.call( arguments, 1 ),
-			fToBind = this,
-			fNOP = function(){},
-			fBound = function(){
-				return fToBind.apply(
-					(
-						this instanceof fNOP &&
-						oThis ? this : oThis
-					),
-					aArgs.concat( Array.prototype.slice.call( arguments ) )
-				);
-			}
-		;
+        var aArgs = Array.prototype.slice.call( arguments, 1 ),
+            fToBind = this,
+            fNOP = function(){},
+            fBound = function(){
+                return fToBind.apply(
+                    (
+                        this instanceof fNOP &&
+                        oThis ? this : oThis
+                    ),
+                    aArgs.concat( Array.prototype.slice.call( arguments ) )
+                );
+            }
+        ;
 
-		fNOP.prototype = this.prototype;
-		fBound.prototype = new fNOP();
+        fNOP.prototype = this.prototype;
+        fBound.prototype = new fNOP();
 
-		return fBound;
-	};
+        return fBound;
+    };
 }
 ```
 
-Nota: El `bind()` polyfill mostrado anteriormente difiere del built-in `bind(..)` en ES5 con respecto a las funciones enlazadas que se usarán con `new` \(vea más adelante por qué es útil\). Debido a que el polyfill no puede crear una función sin un `.prototype `como lo hace la utilidad incorporada, hay alguna indirección matizada para aproximar el mismo comportamiento. Pise con cuidado si va a utilizar el `new` con una función de hard-bound y confía en este polyfill.
+Nota: El `bind()` polyfill mostrado anteriormente difiere del built-in `bind(..)` en ES5 con respecto a las funciones enlazadas que se usarán con `new` \(vea más adelante por qué es útil\). Debido a que el polyfill no puede crear una función sin un `.prototype`como lo hace la utilidad incorporada, hay alguna indirección matizada para aproximar el mismo comportamiento. Pise con cuidado si va a utilizar el `new` con una función de hard-bound y confía en este polyfill.
 
 La parte que está permitiendo el `new` overriding es:
 
@@ -143,5 +143,5 @@ fNOP.prototype = this.prototype;
 fBound.prototype = new fNOP();
 ```
 
-
+vamos aqui 2 de septiembre 2017
 
