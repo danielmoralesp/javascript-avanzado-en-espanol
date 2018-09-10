@@ -15,7 +15,7 @@ function foo() {
 	}
 }
 
-// este código esta en modo estricto
+// este código no esta en modo estricto
 ```
 
 Compare esto con:
