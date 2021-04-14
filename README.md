@@ -6,7 +6,7 @@ Esta es una traducción de la serie de libros de [You Don't Know JS \(book serie
 
 ### Porque realizo este trabajo?
 
-Mi nombre es [Daniel Morales](https://www.danielmorales.co), este es mi perfil de [GitHub](https://github.com/danielmoralesp), y soy un apasionado de Ruby y Ruby On Rails y de Javascript. Inicié la traducción de estos libros para comprender mejor el funcionamiento de Javascript, por tanto era un deseo tener la documentación traducida para mi, pero de paso pensé "Nadie ha realizado una traducción **COMPLETA** al español, porqué no hacerlo?".  La publico para que todos los programadores de habla hispana puedan aprovecharse de este material.
+Mi nombre es Daniel Morales, este es mi perfil de [GitHub](https://github.com/danielmoralesp), y soy un apasionado de Ruby y Ruby On Rails y de Javascript. Inicié la traducción de estos libros para comprender mejor el funcionamiento de Javascript, por tanto era un deseo tener la documentación traducida para mi, pero de paso pensé "Nadie ha realizado una traducción **COMPLETA** al español, porqué no hacerlo?".  La publico para que todos los programadores de habla hispana puedan aprovecharse de este material.
 
 Si deseas hacer alguna corrección o aporte \(ya que seguro podría tener errores de traducción o interpretación\), puedes hacer un fork al [repo principal](https://github.com/danielmoralesp/javascript-avanzado-en-espanol) y solicitar un pull-request, apreciaré dicha ayuda!
 
